@@ -36,8 +36,7 @@ SmartLibraryPlus/
 ├── pom.xml
 └── README.md
 
-yaml
-Kodu kopyala
+
 
 ---
 
@@ -133,9 +132,6 @@ Uygulama çalıştırıldığında kullanıcıya aşağıdaki menü sunulur:
 6 - Ödünç Listesini Görüntüle
 7 - Kitap Geri Teslim Al
 0 - Çıkış
-
-yaml
-Kodu kopyala
 
 - Ödünç verilen kitap tekrar ödünç verilemez.
 - Kitap teslim edildiğinde durumu AVAILABLE olarak güncellenir.
