@@ -1,33 +1,37 @@
-# 📚 SmartLibraryPlus
-Hibernate ORM Tabanlı Akıllı Kütüphane Sistemi
+# 📚SmartLibraryPlus
+Hibernate ORM Tabanlı Akıllı Kütüphane Otomasyon Sistemi
 
-## 🎯 Ödevin Amacı
-Bu projenin amacı öğrencinin aşağıdaki konulardaki bilgisini uygulamalı olarak göstermesidir:
+## 🎯1. Projenin Amacı
+Bu projenin amacı, Nesneye Yönelik Programlama dersi kapsamında öğrencinin:
 
-- Nesneye Yönelik Programlama (OOP)
-- ORM (Object Relational Mapping)
-- Hibernate ile veritabanı işlemleri
-- Entity – Relationship yapıları
-- CRUD operasyonları
+- OOP prensiplerini,
+- ORM (Object Relational Mapping) mantığını,
+- Hibernate framework’ünü,
+- Entity–Relationship yapılarını,
+- CRUD işlemlerini
 
----
-
-## 🌍 Senaryo
-Bir üniversite, mevcut SmartLibrary sistemini geliştirerek Hibernate ORM kullanan daha sürdürülebilir bir yapıya geçmek istemektedir.
-
-- Masaüstü **konsol uygulaması**
-- **Java + Hibernate + SQLite**
-- JDBC ile doğrudan SQL yazılmaz
+uygulamalı olarak gerçekleştirebildiğini göstermektir.
 
 ---
 
-## 📁 Proje Yapısı
+## 2. Proje Senaryosu
+Bir üniversite, mevcut kütüphane otomasyon sistemini geliştirerek Hibernate ORM tabanlı, daha sürdürülebilir bir yapıya geçmek istemektedir.
+
+Geliştirilen sistem:
+- Masaüstü tabanlı bir **konsol uygulamasıdır**.
+- **Java, Hibernate ve SQLite** teknolojileri kullanılmıştır.
+- JDBC ile manuel SQL yazımı yapılmamıştır.
+- Tüm veritabanı işlemleri Hibernate ORM üzerinden gerçekleştirilmiştir.
+
+---
+
+## 📁 3. Proje Yapısı
 SmartLibraryPlus/
 ├── src/
-│ ├── entity/
-│ ├── dao/
-│ ├── util/
-│ └── app/
+│ ├── entity → Veritabanı entity sınıfları
+│ ├── dao → Veri erişim katmanı (DAO)
+│ ├── util → Hibernate yardımcı sınıfları
+│ └── app → Uygulama giriş noktası
 ├── hibernate.cfg.xml
 ├── pom.xml
 └── README.md
@@ -37,7 +41,7 @@ Kodu kopyala
 
 ---
 
-## 📦 Kullanılan Teknolojiler
+##📦 4. Kullanılan Teknolojiler
 - Java
 - Hibernate ORM
 - SQLite
@@ -46,9 +50,11 @@ Kodu kopyala
 
 ---
 
-## 🧱 Entity Sınıfları
+## 5. Entity Sınıfları
 
-### Book (Kitap)
+### 5.1 Book
+Kitap bilgilerini tutan entity sınıfıdır.
+
 | Alan | Açıklama |
 |----|----|
 | id | Birincil anahtar |
@@ -59,18 +65,22 @@ Kodu kopyala
 
 ---
 
-### Student (Öğrenci)
+### 5.2 Student
+Öğrenci bilgilerini tutan entity sınıfıdır.
+
 | Alan | Açıklama |
 |----|----|
 | id | Birincil anahtar |
 | name | Öğrenci adı |
 | department | Bölüm |
 
-Bir öğrencinin birden fazla ödünç alma kaydı olabilir.
+Bir öğrenci birden fazla ödünç alma kaydına sahip olabilir.
 
 ---
 
-### Loan (Ödünç Alma)
+### 5.3 Loan
+Kitap ödünç alma işlemlerini temsil eden entity sınıfıdır.
+
 | Alan | Açıklama |
 |----|----|
 | id | Birincil anahtar |
@@ -79,43 +89,42 @@ Bir öğrencinin birden fazla ödünç alma kaydı olabilir.
 
 ---
 
-## 🔗 Nesne İlişkileri
-| İlişki | Tür |
-|------|------|
-| Student → Loan | OneToMany |
-| Loan → Student | ManyToOne |
-| Loan → Book | OneToOne |
+## 6. Entity İlişkileri
+- **Student – Loan** : OneToMany / ManyToOne
+- **Loan – Book** : OneToOne
 
-@OneToMany, @ManyToOne ve @OneToOne kullanılmıştır.
+İlişkiler Hibernate annotation’ları ile tanımlanmıştır.
 
 ---
 
-## 🗄️ Veritabanı
-- SQLite kullanılmıştır
-- Tablolar Hibernate tarafından otomatik oluşturulur
-- `hbm2ddl.auto=update` aktiftir
+## 🗄️ 7. Veritabanı Yapısı
+- SQLite veritabanı kullanılmıştır.
+- Tablolar Hibernate tarafından otomatik olarak oluşturulmaktadır.
+- `hbm2ddl.auto=update` ayarı aktiftir.
 
 ---
 
-## 🧰 DAO Katmanı
-Her entity için ayrı DAO sınıfı oluşturulmuştur:
+## 8. DAO Katmanı
+Her entity için ayrı bir DAO sınıfı oluşturulmuştur:
 
-- BookDao
-- StudentDao
-- LoanDao
+- BookDao  
+- StudentDao  
+- LoanDao  
 
-Zorunlu metotlar:
-- save()
-- update()
-- delete()
-- getById()
-- getAll()
+DAO sınıflarında aşağıdaki metotlar yer almaktadır:
+- save
+- update
+- delete
+- getById
+- getAll
 
-Hibernate Session ve Transaction kullanılmıştır.
+Tüm işlemler Hibernate **Session** ve **Transaction** kullanılarak gerçekleştirilmiştir.
 
 ---
 
-## 📋 Konsol Menü
+## 9. Konsol Menü ve İşlevler
+Uygulama çalıştırıldığında kullanıcıya aşağıdaki menü sunulur:
+
 1 - Kitap Ekle
 2 - Kitapları Listele
 3 - Öğrenci Ekle
@@ -128,20 +137,22 @@ Hibernate Session ve Transaction kullanılmıştır.
 yaml
 Kodu kopyala
 
+- Ödünç verilen kitap tekrar ödünç verilemez.
+- Kitap teslim edildiğinde durumu AVAILABLE olarak güncellenir.
+
 ---
 
-## ▶️ Proje Nasıl Çalıştırılır?
-1. Proje klonlanır veya ZIP olarak indirilir.
-2. IDE ile açılır.
+## 10. Projenin Çalıştırılması
+1. Proje bilgisayara indirilir veya klonlanır.
+2. IDE (IntelliJ IDEA vb.) ile açılır.
 3. Maven bağımlılıkları yüklenir.
-4. `app` paketindeki `Main` sınıfı çalıştırılır.
-5. Uygulama konsol üzerinden kullanılır.
+4. `app` paketi içindeki `Main` sınıfı çalıştırılır.
+5. Uygulama konsol üzerinden kullanılmaya başlanır.
 
 ---
 
-## ⛔ Yasaklar
-- JDBC ile SQL yazımı
-- Statement / PreparedStatement
-- Spring / Spring Boot
-- GUI (Swing / JavaFX)
-- Tüm kodların tek sınıfta yazılması
+## 11. Kısıtlamalar
+- JDBC ile SQL yazılmamıştır.
+- Spring / Spring Boot kullanılmamıştır.
+- GUI teknolojileri (Swing, JavaFX) kullanılmamıştır.
+- Tüm kodlar tek bir sınıfta toplanmamıştır.
