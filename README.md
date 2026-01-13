@@ -40,7 +40,7 @@ SmartLibraryPlus/
 
 ---
 
-##📦 4. Kullanılan Teknolojiler
+## 📦 4. Kullanılan Teknolojiler
 - Java
 - Hibernate ORM
 - SQLite
